@@ -1,0 +1,16 @@
+4. Analysis
+Time Complexity Analysis:
+
+Add Product:
+Time Complexity: O(1) on average in a HashMap, since it uses hashing to directly access the memory location where the product should be stored.
+Update Product:
+Time Complexity: O(1) on average, similar to adding since it involves finding the product by its ID and updating its details.
+Delete Product:
+Time Complexity: O(1) on average, as the deletion process also relies on hashing to find and remove the product.
+Get Product:
+Time Complexity: O(1) on average, as retrieving an item in a HashMap is generally a constant time operation.
+Optimizations:
+
+Handling Collisions: Implement a good hash function to minimize collisions in the HashMap, which could degrade performance.
+Memory Usage: Monitor the load factor of the HashMap to decide when to resize it. Resizing should be done cautiously to balance between time complexity and memory usage.
+Batch Operations: For adding or deleting multiple products, consider batch processing to reduce the overhead of individual operations.

@@ -1,0 +1,41 @@
+
+Analysis
+Compare the Performance:
+
+Bubble Sort: Time complexity is 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ ). It is simple but inefficient for large datasets.
+Quick Sort: Average time complexity is 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn). It is much more efficient for large datasets compared to Bubble Sort.
+Discuss Preferences:
+
+Quick Sort is generally preferred over Bubble Sort because of its better average-case performance. While Bubble Sort has a time complexity of 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ ), Quick Sort typically performs faster with an average time complexity of 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn). Quick Sort also has better performance characteristics for larger datasets, making it more suitable for practical use cases.

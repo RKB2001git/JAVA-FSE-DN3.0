@@ -1,0 +1,20 @@
+Analysis of Time Complexity
+Add Operation:
+
+Time Complexity: O(1) if there is space; otherwise, O(n) due to shifting elements if the array is full and needs resizing (not covered here).
+Search Operation:
+
+Time Complexity: O(n) because you may need to check each element in the array.
+Traverse Operation:
+
+Time Complexity: O(n) as you need to visit each element.
+Delete Operation:
+
+Time Complexity: O(n) due to shifting elements after removal.
+Limitations of Arrays
+Fixed Size: Once an array is created, its size cannot be changed. This can lead to wasted space or insufficient space.
+Inefficient Deletions: Removing elements requires shifting, which can be costly.
+No Built-in Resizing: Unlike data structures like ArrayList, arrays do not automatically resize.
+When to Use Arrays:
+
+Arrays are suitable when the number of elements is known in advance and does not change often, and when memory efficiency is important. For more dynamic or frequently changing data, consider using more flexible data structures like ArrayLists or LinkedLists.

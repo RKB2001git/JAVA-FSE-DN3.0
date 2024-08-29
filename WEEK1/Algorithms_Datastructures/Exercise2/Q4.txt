@@ -1,0 +1,15 @@
+Analysis
+Compare Time Complexity:
+
+Linear Search:
+Time Complexity: O(n)
+It checks each element one by one.
+Suitable for small datasets.
+Binary Search:
+Time Complexity: O(log n)
+Requires the array to be sorted.
+Suitable for large datasets.
+Which Algorithm is More Suitable?
+
+Binary Search is generally more suitable for an e-commerce platform, especially if the product data is large and sorted. It is much faster than linear search as the dataset grows.
+However, if the data is unsorted or very small, Linear Search might be preferable due to its simplicity and lack of sorting requirement.

@@ -1,0 +1,16 @@
+Step 1: Understanding Asymptotic Notation
+Big O Notation:
+
+Big O notation is a mathematical concept used to describe the time complexity of an algorithm. It gives an upper bound on the time an algorithm will take to run, relative to the size of the input data.
+It helps in analyzing how the runtime of an algorithm grows as the input size increases.
+Common Big O notations:
+O(1): Constant time
+O(log n): Logarithmic time
+O(n): Linear time
+O(n log n): Linearithmic time
+O(n^2): Quadratic time
+Best, Average, and Worst-Case Scenarios for Search Operations:
+
+Best Case: The scenario where the algorithm performs the fewest steps, e.g., finding the target on the first try.
+Average Case: The expected scenario where the algorithm's performance is averaged over all possible inputs.
+Worst Case: The scenario where the algorithm performs the maximum number of steps, e.g., searching through the entire data set.

@@ -1,0 +1,189 @@
+Bubble Sort
+Description: Bubble Sort is a simple comparison-based algorithm. It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The process is repeated until no swaps are needed, which means the list is sorted.
+Time Complexity:
+Best Case: 
+𝑂
+(
+𝑛
+)
+O(n) (when the list is already sorted)
+Average Case: 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ )
+Worst Case: 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ )
+Space Complexity: 
+𝑂
+(
+1
+)
+O(1) (in-place sorting)
+Usage: Simple to implement but inefficient for large datasets.
+2. Insertion Sort
+Description: Insertion Sort builds the final sorted array one item at a time. It picks each element from the unsorted portion and inserts it into its correct position in the sorted portion. It works similarly to how you might sort playing cards in your hands.
+Time Complexity:
+Best Case: 
+𝑂
+(
+𝑛
+)
+O(n) (when the list is already sorted)
+Average Case: 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ )
+Worst Case: 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ )
+Space Complexity: 
+𝑂
+(
+1
+)
+O(1) (in-place sorting)
+Usage: Efficient for small or nearly sorted datasets.
+3. Quick Sort
+Description: Quick Sort is a divide-and-conquer algorithm. It selects a 'pivot' element and partitions the array into two sub-arrays according to whether elements are less than or greater than the pivot. The sub-arrays are then sorted recursively.
+Time Complexity:
+Best Case: 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn)
+Average Case: 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn)
+Worst Case: 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ ) (when the pivot is the smallest or largest element)
+Space Complexity: 
+𝑂
+(
+log
+⁡
+𝑛
+)
+O(logn) (for the stack space in recursion)
+Usage: Very efficient for large datasets and widely used in practice due to its average-case efficiency.
+4. Merge Sort
+Description: Merge Sort is also a divide-and-conquer algorithm. It divides the array into two halves, sorts each half recursively, and then merges the sorted halves to produce the sorted array.
+Time Complexity:
+Best Case: 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn)
+Average Case: 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn)
+Worst Case: 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn)
+Space Complexity: 
+𝑂
+(
+𝑛
+)
+O(n) (requires additional space for merging)
+Usage: Guarantees 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn) performance but requires extra space for merging. It is stable and good for linked lists.
+Summary
+Bubble Sort: Simple but inefficient for large datasets. Time complexity 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ ).
+Insertion Sort: Good for small or nearly sorted datasets. Time complexity 
+𝑂
+(
+𝑛
+2
+)
+O(n 
+2
+ ).
+Quick Sort: Efficient average-case performance with 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn). Commonly used in practice.
+Merge Sort: Consistent 
+𝑂
+(
+𝑛
+log
+⁡
+𝑛
+)
+O(nlogn) performance and stability, but uses additional space.
