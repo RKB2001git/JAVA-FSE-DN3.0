@@ -1,0 +1,10 @@
+1. Understand Linked Lists
+Types of Linked Lists:
+Singly Linked List: Each node contains a data element and a reference (or pointer) to the next node in the sequence. It allows traversal in only one direction (from head to tail).
+
+Pros: Simple structure, minimal memory overhead for node links.
+Cons: Cannot traverse backward; deletion of nodes may require traversing the list from the start.
+Doubly Linked List: Each node contains a data element, a reference to the next node, and a reference to the previous node. This allows traversal in both directions (from head to tail and tail to head).
+
+Pros: Easier to delete nodes (can access the previous node directly); bidirectional traversal.
+Cons: Extra memory for the previous pointer in each node; slightly more complex implementation.
