@@ -1,0 +1,27 @@
+Scenario 3: Ensure data integrity when adding a new customer.
+o	Question: Write a stored procedure AddNewCustomer that inserts a new customer into the Customers table. If a customer with the same ID already exists, handle the exception by logging an error and preventing the insertion.
+
+
+CREATE PROCEDURE AddNewCustomer
+    @CustomerID INT,
+    @CustomerName NVARCHAR(100),
+    @CustomerAddress NVARCHAR(200)
+AS
+BEGIN
+    BEGIN TRY
+        -- Check if the customer already exists
+        IF EXISTS (SELECT 1 FROM Customers WHERE CustomerID = @CustomerID)
+        BEGIN
+            THROW 50002, 'Customer with the same ID already exists.', 1;
+        END
+
+        -- Insert new customer
+        INSERT INTO Customers (CustomerID, CustomerName, CustomerAddress)
+        VALUES (@CustomerID, @CustomerName, @CustomerAddress);
+    END TRY
+    BEGIN CATCH
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        INSERT INTO ErrorLog (ErrorMessage, ErrorTime) VALUES (@ErrorMessage, GETDATE());
+        RAISERROR(@ErrorMessage, 16, 1);
+    END CATCH
+END;

@@ -1,0 +1,23 @@
+Scenario 3: The bank wants to send reminders to customers whose loans are due within the next 30 days.
+o	Question: Write a PL/SQL block that fetches all loans due in the next 30 days and prints a reminder message for each customer.
+
+
+DECLARE
+    CURSOR c_loans IS
+        SELECT customer_id, loan_due_date
+        FROM loans
+        WHERE loan_due_date BETWEEN SYSDATE AND SYSDATE + 30;
+
+    v_customer_id loans.customer_id%TYPE;
+    v_due_date loans.loan_due_date%TYPE;
+BEGIN
+    FOR r_loan IN c_loans LOOP
+        v_customer_id := r_loan.customer_id;
+        v_due_date := r_loan.loan_due_date;
+
+        -- Print a reminder message for each loan due in the next 30 days
+        DBMS_OUTPUT.PUT_LINE('Reminder: Customer ID ' || v_customer_id || 
+                             ' has a loan due on ' || TO_CHAR(v_due_date, 'YYYY-MM-DD'));
+    END LOOP;
+END;
+/

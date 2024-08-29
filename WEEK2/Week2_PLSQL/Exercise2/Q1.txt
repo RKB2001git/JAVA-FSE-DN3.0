@@ -1,0 +1,41 @@
+Scenario 1: Handle exceptions during fund transfers between accounts.
+o	Question: Write a stored procedure SafeTransferFunds that transfers funds between two accounts. Ensure that if any error occurs (e.g., insufficient funds), an appropriate error message is logged and the transaction is rolled back.
+
+
+CREATE PROCEDURE SafeTransferFunds
+    @FromAccountID INT,
+    @ToAccountID INT,
+    @Amount DECIMAL(18, 2)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Check if the FromAccount has sufficient funds
+        DECLARE @FromAccountBalance DECIMAL(18, 2);
+        SELECT @FromAccountBalance = Balance FROM Accounts WHERE AccountID = @FromAccountID;
+
+        IF @FromAccountBalance < @Amount
+        BEGIN
+            THROW 50000, 'Insufficient funds in the source account.', 1;
+        END
+
+        -- Deduct the amount from the FromAccount
+        UPDATE Accounts
+        SET Balance = Balance - @Amount
+        WHERE AccountID = @FromAccountID;
+
+        -- Add the amount to the ToAccount
+        UPDATE Accounts
+        SET Balance = Balance + @Amount
+        WHERE AccountID = @ToAccountID;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        INSERT INTO ErrorLog (ErrorMessage, ErrorTime) VALUES (@ErrorMessage, GETDATE());
+        RAISERROR(@ErrorMessage, 16, 1);
+    END CATCH
+END;
