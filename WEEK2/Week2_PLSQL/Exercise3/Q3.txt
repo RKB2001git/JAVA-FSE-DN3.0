@@ -1,0 +1,38 @@
+Scenario 3: Customers should be able to transfer funds between their accounts.
+o	Question: Write a stored procedure TransferFunds that transfers a specified amount from one account to another, checking that the source account has sufficient balance before making the transfer.
+
+
+DELIMITER $$
+
+CREATE PROCEDURE TransferFunds(
+    IN source_account_id INT,
+    IN destination_account_id INT,
+    IN transfer_amount DECIMAL(10,2)
+)
+BEGIN
+    DECLARE current_balance DECIMAL(10,2);
+
+    -- Check the current balance of the source account
+    SELECT balance INTO current_balance
+    FROM Accounts
+    WHERE account_id = source_account_id;
+
+    -- If the current balance is sufficient, proceed with the transfer
+    IF current_balance >= transfer_amount THEN
+        -- Deduct the amount from the source account
+        UPDATE Accounts
+        SET balance = balance - transfer_amount
+        WHERE account_id = source_account_id;
+
+        -- Add the amount to the destination account
+        UPDATE Accounts
+        SET balance = balance + transfer_amount
+        WHERE account_id = destination_account_id;
+    ELSE
+        -- Handle the case where the balance is insufficient (optional)
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Insufficient funds in the source account';
+    END IF;
+END$$
+
+DELIMITER ;

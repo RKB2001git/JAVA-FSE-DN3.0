@@ -1,0 +1,11 @@
+Scenario 2: Maintain an audit log for all transactions.
+o	Question: Write a trigger LogTransaction that inserts a record into an AuditLog table whenever a transaction is inserted into the Transactions table.
+
+
+CREATE TRIGGER LogTransaction
+AFTER INSERT ON Transactions
+FOR EACH ROW
+BEGIN
+    INSERT INTO AuditLog (TransactionID, TransactionDate, Details)
+    VALUES (NEW.TransactionID, NEW.TransactionDate, 'Transaction inserted');
+END;

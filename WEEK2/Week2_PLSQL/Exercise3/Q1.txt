@@ -1,0 +1,14 @@
+Scenario 1: The bank needs to process monthly interest for all savings accounts.
+o	Question: Write a stored procedure ProcessMonthlyInterest that calculates and updates the balance of all savings accounts by applying an interest rate of 1% to the current balance.
+
+
+DELIMITER $$
+
+CREATE PROCEDURE ProcessMonthlyInterest()
+BEGIN
+    -- Update the balance of all savings accounts by applying 1% interest
+    UPDATE SavingsAccounts
+    SET balance = balance + (balance * 0.01);
+END$$
+
+DELIMITER ;
