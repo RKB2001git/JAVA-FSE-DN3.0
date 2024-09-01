@@ -1,0 +1,93 @@
+Step 1: Create Spring Configuration File
+Navigate to src/main/resources:
+
+In your IntelliJ project, locate the src/main/resources directory.
+Create the applicationContext.xml File:
+
+Right-click on the resources directory, select New > File.
+Name the file applicationContext.xml and click OK.
+Define Beans for BookService and BookRepository:
+
+Open applicationContext.xml and add the following XML code to define the beans:
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Bean Definition for BookRepository -->
+    <bean id="bookRepository" class="com.library.repository.BookRepository"/>
+
+    <!-- Bean Definition for BookService -->
+    <bean id="bookService" class="com.library.service.BookService">
+        <property name="bookRepository" ref="bookRepository"/>
+    </bean>
+
+</beans>
+
+In this configuration:
+The <bean> tag defines a Spring bean.
+The id attribute is the name of the bean.
+The class attribute specifies the fully qualified name of the class that the bean will instantiate.
+The <property> tag sets the bookRepository property in the BookService bean by referencing the bookRepository bean.
+
+
+Step 2: Update the BookService Class
+Open the BookService Class:
+In the src/main/java/com/library/service package, open the BookService.java file.
+Add a Setter Method for BookRepository:
+Ensure that your BookService class has a setter method to inject the BookRepository dependency:
+
+package com.library.service;
+
+import com.library.repository.BookRepository;
+
+public class BookService {
+    private BookRepository bookRepository;
+
+    // Setter method for dependency injection
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public void displayBooks() {
+        // Logic to display books, e.g., bookRepository.findAll();
+        System.out.println("Displaying books...");
+    }
+}
+
+
+The setBookRepository method is essential for Spring to inject the BookRepository dependency into BookService.
+
+
+Step 3: Run the Application
+Create the Main Class:
+In the src/main/java/com/library package, create a new class named LibraryManagementApplication with a main method:
+
+
+package com.library;
+
+import com.library.service.BookService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class LibraryManagementApplication {
+    public static void main(String[] args) {
+        // Load Spring context from XML configuration file
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // Retrieve the BookService bean
+        BookService bookService = (BookService) context.getBean("bookService");
+
+        // Test the configuration by calling a method on the service
+        bookService.displayBooks();
+    }
+}
+
+
+This class loads the Spring context from applicationContext.xml, retrieves the BookService bean, and calls a method to test if the configuration works correctly.
+Run the Main Class:
+
+Right-click on the LibraryManagementApplication class and select Run 'LibraryManagementApplication'.
+Check the console output to verify that the displayBooks method is called successfully. You should see the "Displaying books..." message if everything is set up correctly.
